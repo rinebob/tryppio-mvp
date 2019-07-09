@@ -117,16 +117,20 @@ src
 ng new tryppio-mvp --routing
 
 // ====================================================
-// commands to generate components using angular cli:
+// commands to generate header component using angular cli:
 // ====================================================
 // (wouldn't work without skip import option)
-ng g c map-main --skip-import
-ng g c view-main --skip-import
-ng g c map-main/map --skip-import
-ng g c map-main/edit-image --skip-import
-ng g c map-main/locate-image --skip-import
-ng g c view-main/view-image --skip-import
-ng g c view-main/view-thumbs --skip-import
+ng g c header
+
+// open localhost:4200 and should see angular start page
+
+// other component generate commands for angular cli
+// ng g c view-main --skip-import
+// ng g c map-main/map --skip-import
+// ng g c map-main/edit-image --skip-import
+// ng g c map-main/locate-image --skip-import
+// ng g c view-main/view-image --skip-import
+// ng g c view-main/view-thumbs --skip-import
 
 // ====================================================
 // index.html
