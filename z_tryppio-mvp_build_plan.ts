@@ -107,6 +107,15 @@ src
 			image thumb component
 
 
+PROJECT HTML COMPONENT TAG NESTING
+
+index.html
+  app-root (app.component.html)
+  app.component.html
+    app-header
+    router-outlet
+
+
 
 
 */
@@ -116,17 +125,31 @@ src
 // ====================================================
 ng new tryppio-mvp --routing
 
+/*
+in browser navigate to localhost:4200
+angular start page is displayed
+
+created github repo, added branches aa-develop and header
+
+*/
+
 // ====================================================
-// commands to generate components using angular cli:
+// Create Header Component using angular cli
 // ====================================================
-// (wouldn't work without skip import option)
-ng g c map-main --skip-import
-ng g c view-main --skip-import
-ng g c map-main/map --skip-import
-ng g c map-main/edit-image --skip-import
-ng g c map-main/locate-image --skip-import
-ng g c view-main/view-image --skip-import
-ng g c view-main/view-thumbs --skip-import
+
+ng g c header
+
+// ====================================================
+// commands to generate other components using angular cli:
+// ====================================================
+
+// ng g c map-main --skip-import
+// ng g c view-main --skip-import
+// ng g c map-main/map --skip-import
+// ng g c map-main/edit-image --skip-import
+// ng g c map-main/locate-image --skip-import
+// ng g c view-main/view-image --skip-import
+// ng g c view-main/view-thumbs --skip-import
 
 // ====================================================
 // index.html
@@ -147,7 +170,7 @@ ng g c view-main/view-thumbs --skip-import
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" >
 	<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-	<link href="/styles.css" rel="stylesheet" />
+	<link type="text/css" href="/styles.css"/>
 </head>
 <body>
 
@@ -165,42 +188,189 @@ ng g c view-main/view-thumbs --skip-import
 </body>
 </html>
 
+
 // ====================================================
 // app.component.html
 // ====================================================
 // add tags for header component and router-outlet
 
 <app-header></app-header>
-<main>
-	<router-outlet></router-outlet>
-</main>
+<router-outlet></router-outlet>
+// <main>
+// </main>
 
 // ====================================================
+// Install Angular Material Component Library
+// ====================================================
+// see https://material.angular.io/guide/getting-started for instructions
+
+// 1) install material, cdk and animations
+ng add @angular/material
+
+// theme = indigo pink
+// added hammerjs support
+// added browser animations
+
+// 2) configure animations
 // app.module.ts
-// ====================================================
-// register new components
-import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-import { AppComponent } from './app.component';
-
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 @NgModule({
-	declarations: [
-		AppComponent,
-
-	],
-	imports: [
-		BrowserModule,
-
-	],
-	bootstrap: [ AppComponent ]
-
+  imports: [
+    ...,
+    BrowserAnimationsModule
+  ],
 })
 
-export class AppModule { }
+// 3) imported MatToolBarModule into app.module.ts as test
+// 4) added theme indigo-pink.css
+// styles.css
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+// 5) hammer.js gesture support added automatically during ng add @angular/material
+// for manual installation only:
+npm install --save hammerjs
+// src/main.ts
+import 'hammerjs';
+
+// 6) added Material Icons font to index.html
+// index.html head section
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
 
+// note: ng add @angular/material added lines to package.json:
+"@angular/material": "^8.0.2",
+"@angular/cdk": "~8.0.2",
+"hammerjs": "^2.0.8",
 
+// navigating to 4200 shows grey toolbar.  Adding color="primary" attribute to html tag changes to blue/white
+
+
+// added remaining links to nav bar:
+// Main Map, Upload, Edit, Locate with margin 1rem
+
+// insert a spacer element between brand and nav links (ie span)
+// use flexbox to make it expand so it pushes nav links to right
+
+
+// copied angular-material.module.ts from tryppio to tryppio-mvp/src/app
+// import angular-material.module.ts into app.module.ts
+// this caused errors and didn't compile though
+// so, imported MatToolbarmodule into app.module.ts
+
+// app.module.ts
+// import { AngularMaterialModule } from './angular-material.module';
+// @NgModule({
+//   imports: [
+//     ...,
+//     AngularMaterialModule
+//   ],
+// })
+
+
+// ====================================================
+// Header Component - Initial installation
+// ====================================================
+// header.component.html
+<mat-toolbar color="primary">
+  <span>
+    <a routerLink="/">Tryppio</a>
+  </span>
+  <span class="spacer"></span>
+  <ul>
+    <li>
+      <a mat-button >Main Map</a>
+    </li>
+    <li>
+      <a mat-button >Upload</a>
+    </li>
+    <li>
+      <a mat-button >Edit</a>
+    </li>
+    <li>
+      <a mat-button >Locate</a>
+    </li>
+  </ul>
+</mat-toolbar>
+
+// header.component.ts
+import { Component, OnInit } from '@angular/core';
+
+@Component({
+  selector: 'app-header',
+  templateUrl: './header.component.html',
+  styleUrls: ['./header.component.css']
+})
+export class HeaderComponent implements OnInit {
+
+  constructor() { }
+
+  ngOnInit() {
+  }
+
+}
+
+// header.component.css
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+a {
+  text-decoration: none;
+  color: white;
+  margin: 0 1rem;
+}
+
+
+// ====================================================
+// Header component add routing
+// ====================================================
+// added routerLink="/" directives to html
+// map-main, upload-images, view-images, edit-images, locate-images
+
+// header.component.html
+<ul>
+    <li>
+      <a mat-button routerLink="/map-main">Main Map</a>
+    </li>
+    <li>
+      <a mat-button routerLink="/upload-images">Upload</a>
+    </li>
+    <li>
+      <a mat-button routerLink="/view-images">View</a>
+    </li>
+    <li>
+      <a mat-button routerLink="/edit-images">Edit</a>
+    </li>
+    <li>
+      <a mat-button routerLink="/locate-images">Locate</a>
+    </li>
+  </ul>
+
+// app-routing.module.ts
+// placeholder routes for when components are built
+const routes: Routes = [
+  { path: '', component: AppComponent },
+  { path: 'map-main', component: AppComponent },
+  { path: 'upload-images', component: AppComponent },
+  { path: 'view-images', component: AppComponent },
+  { path: 'edit-images', component: AppComponent },
+  { path: 'locate-images', component: AppComponent },
+  { path: '**', component: AppComponent }
+];
+
+// note: this leads to two toolbars being displayed.  will fix soon
+
+
+// ====================================================
+// ADD MAP-MAIN COMPONENT
+// ====================================================
 
 
 // ====================================================
