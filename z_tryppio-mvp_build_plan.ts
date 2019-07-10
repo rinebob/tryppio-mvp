@@ -367,6 +367,23 @@ const routes: Routes = [
 
 // note: this leads to two toolbars being displayed.  will fix soon
 
+// ====================================================
+// ADD ANGULAR FLEX-LAYOUT PACKAGE
+// ====================================================
+npm i -s @angular/flex-layout
+
+// app.module.ts
+import { FlexLayoutModule } from '@angular/flex-layout';
+
+@NgModule({
+  ...
+  imports: [
+    FlexLayoutModule,
+  ],
+  ...
+})
+
+
 
 // ====================================================
 // ADD MAP-MAIN COMPONENT
