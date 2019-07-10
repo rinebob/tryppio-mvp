@@ -390,6 +390,9 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 // this is the container for map, edit and locate components with image-list component
 
 // html split vertically 66% left side 33% right side
+// https://github.com/angular/flex-layout/wiki/fxFlex-API
+
+<div></div>
 
 
 
