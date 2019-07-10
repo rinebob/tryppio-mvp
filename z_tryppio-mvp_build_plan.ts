@@ -367,10 +367,37 @@ const routes: Routes = [
 
 // note: this leads to two toolbars being displayed.  will fix soon
 
+// ====================================================
+// INSTALLING ANGULAR FLEX-LAYOUT
+// ====================================================
+// install via npm
+npm i -s @angular/flex-layout
+
+// import into app.module
+import { FlexLayoutModule } from '@angular/flex-layout';
+...
+
+@NgModule({
+    ...
+    imports: [ FlexLayoutModule ],
+    ...
+});
+
 
 // ====================================================
 // ADD MAP-MAIN COMPONENT
 // ====================================================
+// this is the container for map, edit and locate components with image-list component
+
+// html split vertically 66% left side 33% right side
+
+
+
+
+
+// left side switches between map, edit and locate components
+// right side holds image-list component always
+// on mobile layout is map above image-list component
 
 
 // ====================================================
