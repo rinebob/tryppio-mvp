@@ -2,8 +2,6 @@
   display: grid;
   grid-template-areas: "content side";
   grid-template-rows: auto;
-  /* height: 100%; */
-
 }
 
 div {
@@ -13,13 +11,11 @@ div {
 }
 
 .content {
-  /* height: 100%; */
-  min-height:100vh;
+  min-height: 95vh;
 
 }
 
 .side {
-  /* height: 100%; */
-  min-height:100vh;
+  min-height: 95vh;
 
 }
