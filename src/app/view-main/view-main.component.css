@@ -1,0 +1,27 @@
+.container {
+  display: grid;
+  grid-template-areas: "view thumbs";
+  grid-template-rows: auto;
+  /* min-height: 100vh; */
+  min-width: 100vh;
+}
+
+div {
+  border: 1px solid black;
+  margin: 0;
+  padding: 0;
+}
+
+.view {
+  grid-template: view;
+  min-height: 70vh;
+  min-width: 100vh;
+
+}
+
+.thumbs {
+  grid-template: thumbs;
+  /* min-height: 20vh; */
+  /* min-width: 100vh; */
+
+}

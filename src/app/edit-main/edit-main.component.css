@@ -1,0 +1,21 @@
+.container {
+  display: grid;
+  grid-template-areas: "content side";
+  grid-template-rows: auto;
+}
+
+div {
+  border: 1px solid black;
+  margin: 0;
+  padding: 0;
+}
+
+.content {
+  min-height: 90vh;
+
+}
+
+.side {
+  /* min-height: 95vh; */
+
+}
