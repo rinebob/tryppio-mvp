@@ -1,1 +1,10 @@
-<p>Yes it's the Image-List Component in Flexbox dude!</p>
+<div class="container" fxLayout="row" height="100%" width="100%">
+    <div class="content" fxFlex="100%">
+      <div fxFlex="100%">
+        <p>Image List Component dude...</p>
+          <app-image-item *ngFor="let image of images"></app-image-item>
+
+
+      </div>
+    </div>
+  </div>

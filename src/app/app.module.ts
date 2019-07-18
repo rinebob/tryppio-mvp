@@ -20,6 +20,7 @@ import { ImageThumbsComponent } from './view-main/image-thumbs/image-thumbs.comp
 import { ImageEditComponent } from './edit-main/image-edit/image-edit.component';
 import { LocateMainComponent } from './locate-main/locate-main.component';
 import { ImageLocateComponent } from './locate-main/image-locate/image-locate.component';
+import { ImageItemComponent } from './image-list/image-item/image-item.component';
 
 
 
@@ -38,6 +39,7 @@ import { ImageLocateComponent } from './locate-main/image-locate/image-locate.co
     ImageEditComponent,
     LocateMainComponent,
     ImageLocateComponent,
+    ImageItemComponent,
 
   ],
   imports: [
