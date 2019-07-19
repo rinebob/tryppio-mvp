@@ -1,9 +1,25 @@
 <div class="container" fxLayout="row" height="100%" width="100%">
     <div class="content" fxFlex="100%">
       <div fxFlex="100%">
-        <p>Image List Component dude...</p>
-          <app-image-item *ngFor="let image of images"></app-image-item>
 
+          <!-- <app-image-item *ngFor="let image of images"></app-image-item> -->
+
+          <mat-card *ngFor="let image of images" class="image-card mat-elevation-z10">
+            <mat-card-header>
+              <div mat-card-avatar></div>
+              <mat-card-title>{{ image.title }}</mat-card-title>
+            </mat-card-header>
+            <img mat-card-image [src]="image.imagePath" alt="">
+            <!-- <img mat-card-image src="{{image.imagePath}}" alt=""> -->
+            <mat-card-content>
+            {{ image.description }}
+            </mat-card-content>
+            <mat-card-actions class="image-actions">
+              <button mat-button class="mat-raised-button mat-primary">View</button>
+              <button mat-button class="mat-raised-button mat-primary">Edit</button>
+              <button mat-button class="mat-raised-button mat-primary">Delete</button>
+            </mat-card-actions>
+          </mat-card>
 
       </div>
     </div>

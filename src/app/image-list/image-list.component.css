@@ -1,0 +1,12 @@
+.image-card {
+  margin: 20px 10px;
+}
+
+.image-actions {
+  text-align: center;
+}
+
+img {
+  max-width: 200px;
+  margin: 0 20px;
+}

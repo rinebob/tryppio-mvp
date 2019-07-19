@@ -1,7 +1,9 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FormsModule } from '@angular/forms';
 import { MatToolbarModule,  } from '@angular/material';
+import {MatCardModule} from '@angular/material/card';
 
 import { FlexLayoutModule } from '@angular/flex-layout';
 
@@ -21,6 +23,8 @@ import { ImageEditComponent } from './edit-main/image-edit/image-edit.component'
 import { LocateMainComponent } from './locate-main/locate-main.component';
 import { ImageLocateComponent } from './locate-main/image-locate/image-locate.component';
 import { ImageItemComponent } from './image-list/image-item/image-item.component';
+import { UploadMainComponent } from './upload-main/upload-main.component';
+import { ImageUploadComponent } from './upload-main/image-upload/image-upload.component';
 
 
 
@@ -40,15 +44,19 @@ import { ImageItemComponent } from './image-list/image-item/image-item.component
     LocateMainComponent,
     ImageLocateComponent,
     ImageItemComponent,
+    UploadMainComponent,
+    ImageUploadComponent,
 
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    FormsModule,
     AppRoutingModule,
     FlexLayoutModule,
 
     MatToolbarModule,
+    MatCardModule,
     // MatAppBackground
 
   ],
